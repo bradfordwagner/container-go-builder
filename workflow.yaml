@@ -7,8 +7,7 @@ spec:
   arguments:
     parameters:
     - name: git_version
-      value: "feature/init"
-#     value: main
+      value: main
     - name: tag
       value: latest
     - name: repo_name
