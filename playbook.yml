@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  vars:
+    go_ver: 1.16.6
+  roles:
+    - role: andrewrothstein.go-dev

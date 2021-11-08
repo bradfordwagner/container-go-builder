@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: go-builder-image-
+spec:
+  entrypoint: main
+  arguments:
+    parameters:
+    - name: git_version
+      value: "feature/init"
+#     value: main
+    - name: tag
+      value: latest
+    - name: repo_name
+      value: quay.io/bradfordwagner/go-builder
+    - name: push
+      value: ""
+    - name: upstream_repo
+      value: quay.io/bradfordwagner/ansible
+    - name: upstream_tag
+      value: 1.4.0
+  templates:
+  - name: main
+    inputs:
+      parameters:
+      - name: git_version
+      - name: tag
+      - name: upstream_repo
+      - name: upstream_tag
+      - name: repo_name
+      - name: push
+    dag:
+      tasks:
+      - name: ansible
+        arguments:
+          parameters:
+          - name: git_repo
+            value: https://github.com/bradfordwagner/container-go-builder.git
+          - name: git_version
+            value: "{{ inputs.parameters.git_version }}"
+          - name: upstream_repo
+            value: "{{ inputs.parameters.upstream_repo }}"
+          - name: upstream_tag
+            value: "{{ inputs.parameters.upstream_tag }}-{{ item.platform }}"
+          - name: repo_name
+            value: "{{ inputs.parameters.repo_name }}"
+          - name: push
+            value: "{{ inputs.parameters.push }}"
+          - name: tag
+            value: "{{ inputs.parameters.tag }}-{{ item.platform }}"
+        templateRef:
+          name: flavor-ansible-template
+          template: main
+        withItems:
+        - { platform: alpine_3.13     }
+        - { platform: alpine_3.14     }
+        - { platform: ubuntu_bionic   }
+        - { platform: ubuntu_focal    }
+        - { platform: debian_buster   }
+        - { platform: debian_bullseye }
