@@ -40,7 +40,7 @@ spec:
             value: "{{ item.platform }}"
         templateRef:
           name: flavor-ansible-template
-          template: main
+          template: "{{inputs.parameters.git_ref_type}}"
         withItems:
         - { platform: alpine_3.13     }
         - { platform: alpine_3.14     }
