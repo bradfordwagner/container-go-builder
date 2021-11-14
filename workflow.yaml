@@ -20,7 +20,7 @@ spec:
       - name: upstream_repo
         value: quay.io/bradfordwagner/ansible
       - name: upstream_tag
-        value: 1.4.0
+        value: 2.0.4
     dag:
       tasks:
       - name: ansible
