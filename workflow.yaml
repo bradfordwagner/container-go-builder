@@ -3,6 +3,8 @@ kind: Workflow
 metadata:
   generateName: go-builder-image-
 spec:
+  podGC:
+    strategy: OnPodSuccess # delete pods when workflow is successful
   entrypoint: main
   arguments:
     parameters:
@@ -20,7 +22,7 @@ spec:
       - name: upstream_repo
         value: quay.io/bradfordwagner/ansible
       - name: upstream_tag
-        value: 2.0.4
+        value: 3.2.0
     dag:
       tasks:
       - name: ansible
@@ -36,16 +38,20 @@ spec:
             value: "{{ inputs.parameters.upstream_tag }}"
           - name: repo_name
             value: "{{ inputs.parameters.repo_name }}"
+          - name: tag_suffix
+            value: "-{{ item.platform }}"
           - name: platform
             value: "{{ item.platform }}"
+          - name: runtime_platforms
+            value: "{{ item.runtime_platforms }}"
         templateRef:
           name: flavor-ansible-template
           template: "{{inputs.parameters.git_ref_type}}"
         withItems:
-        - { platform: alpine_3.13     }
-        - { platform: alpine_3.14     }
-        - { platform: ubuntu_bionic   }
-        - { platform: ubuntu_focal    }
-        - { platform: debian_buster   }
-        - { platform: debian_bullseye }
+        - { platform: alpine_3.13     , runtime_platforms: [linux/amd64] }
+#       - { platform: alpine_3.14     , runtime_platforms: [linux/amd64] }
+#       - { platform: ubuntu_bionic   , runtime_platforms: [linux/amd64] }
+#       - { platform: ubuntu_focal    , runtime_platforms: [linux/amd64] }
+#       - { platform: debian_buster   , runtime_platforms: [linux/amd64] }
+#       - { platform: debian_bullseye , runtime_platforms: [linux/amd64] }
 
