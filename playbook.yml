@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   vars:
+    go_ver: 1.18.3
     go_dev_install:
       - pkg: github.com/goreleaser/goreleaser@v1.9.2
         target: goreleaser
