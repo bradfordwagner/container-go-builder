@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   vars:
-    go_ver: 1.16.6
+    go_dev_install:
+      - pkg: github.com/goreleaser/goreleaser@v1.9.2
+        target: goreleaser
   roles:
     - role: andrewrothstein.go-dev
