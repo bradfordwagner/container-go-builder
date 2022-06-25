@@ -48,10 +48,11 @@ spec:
           name: flavor-ansible-template
           template: "{{inputs.parameters.git_ref_type}}"
         withItems:
-        - { platform: alpine_3.13     , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: alpine_3.14     , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: ubuntu_bionic   , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: ubuntu_focal    , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: debian_buster   , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: debian_bullseye , runtime_platforms: [linux/amd64, linux/arm64] }
+        - { platform: alpine_3.13     , runtime_platforms: [linux/arm64] }
+#       - { platform: alpine_3.13     , runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: alpine_3.14     , runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: ubuntu_bionic   , runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: ubuntu_focal    , runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: debian_buster   , runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: debian_bullseye , runtime_platforms: [linux/amd64, linux/arm64] }
 

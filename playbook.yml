@@ -1,6 +1,10 @@
 ---
 - hosts: localhost
   vars:
-    go_ver: 1.16.6
+    go_ver: 1.18.3
+    go_dev_escalate: true
+    goreleaser_version: v1.9.2
   roles:
+    - role: andrewrothstein.gcc-toolbox
     - role: andrewrothstein.go-dev
+    - role: andrewrothstein.goreleaser

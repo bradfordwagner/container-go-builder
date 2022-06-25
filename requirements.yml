@@ -1,2 +1,7 @@
+---
+- role: andrewrothstein.gcc-toolbox
+  version: v1.1.5
 - role: andrewrothstein.go-dev
-  version: v2.4.3
+  version: v3.0.2
+- role: andrewrothstein.goreleaser
+  version: v2.1.14
