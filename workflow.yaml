@@ -11,6 +11,7 @@ spec:
     - name: git_ref_type
       value: branches
     - name: git_version
+      value: feature/arm
   templates:
   - name: main
     inputs:
@@ -48,9 +49,12 @@ spec:
           name: flavor-ansible-template
           template: "{{inputs.parameters.git_ref_type}}"
         withItems:
-        - { platform: debian_bullseye, runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: debian_bookworm, runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: alpine_3.15    , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: alpine_3.16    , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: ubuntu_focal   , runtime_platforms: [linux/amd64, linux/arm64] }
-        - { platform: ubuntu_kinetic , runtime_platforms: [linux/amd64, linux/arm64] }
+        - { p#atform: alpine_3.16    , runtime_platforms: [linux/arm64] }
+#       - { platform: alpine_3.16    , runtime_platforms: [linux/amd64, linux/arm64] }
+
+#       - { platform: debian_bullseye, runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: debian_bookworm, runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: alpine_3.15    , runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: alpine_3.16    , runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: ubuntu_focal   , runtime_platforms: [linux/amd64, linux/arm64] }
+#       - { platform: ubuntu_kinetic , runtime_platforms: [linux/amd64, linux/arm64] }
