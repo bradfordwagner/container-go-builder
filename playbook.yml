@@ -17,4 +17,6 @@
   tasks:
     - name: check go binary
       shell: go version
+    - name: check vault binary
+      shell: vault version
 
