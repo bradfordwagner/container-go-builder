@@ -14,4 +14,7 @@
     - role: andrewrothstein.goreleaser
     - role: andrewrothstein.jq
     - role: andrewrothstein.hashi
+  tasks:
+    - name: check go binary
+      shell: go version
 
