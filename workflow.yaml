@@ -49,7 +49,7 @@ spec:
           name: flavor-ansible-template
           template: "{{inputs.parameters.git_ref_type}}"
         withItems:
-        - { p#atform: alpine_3.16    , runtime_platforms: [linux/arm64] }
+        - { platform: alpine_3.16    , runtime_platforms: [linux/arm64] }
 #       - { platform: alpine_3.16    , runtime_platforms: [linux/amd64, linux/arm64] }
 
 #       - { platform: debian_bullseye, runtime_platforms: [linux/amd64, linux/arm64] }
