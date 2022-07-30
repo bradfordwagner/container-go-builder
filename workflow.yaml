@@ -43,18 +43,40 @@ spec:
             value: "-{{ item.platform }}"
           - name: platform
             value: "{{ item.platform }}"
-          - name: runtime_platforms
-            value: "{{ item.runtime_platforms }}"
+          - name: ansible_args
+            value: "{{ item.ansible_args }}"
         templateRef:
           name: flavor-ansible-template
           template: "{{inputs.parameters.git_ref_type}}"
         withItems:
-        - { platform: alpine_3.16    , runtime_platforms: [linux/arm64] }
-#       - { platform: alpine_3.16    , runtime_platforms: [linux/amd64, linux/arm64] }
+          - { platform: alpine_3.15    , ansible_args: [
+              {"platform": "linux/amd64", "ansible_extra_args": ""},
+              {"platform": "linux/arm64", "ansible_extra_args": {"go_arch": "arm64", "hashi_platform": {"arch": "arm64", "os": "linux"}, "goreleaser_arch": "arm64"}}
+              ]
+            }
+          - { platform: alpine_3.16    , ansible_args: [
+              {"platform": "linux/amd64", "ansible_extra_args": ""},
+              {"platform": "linux/arm64", "ansible_extra_args": {"go_arch": "arm64", "hashi_platform": {"arch": "arm64", "os": "linux"}, "goreleaser_arch": "arm64"}}
+              ]
+            }
+          - { platform: debian_bullseye, ansible_args: [
+                {"platform": "linux/amd64", "ansible_extra_args": ""},
+                {"platform": "linux/arm64", "ansible_extra_args": {"go_arch": "arm64", "hashi_platform": {"arch": "arm64", "os": "linux"}, "goreleaser_arch": "arm64"}}
+              ]
+            }
+          - { platform: debian_bookworm, ansible_args: [
+                {"platform": "linux/amd64", "ansible_extra_args": ""},
+                {"platform": "linux/arm64", "ansible_extra_args": {"go_arch": "arm64", "hashi_platform": {"arch": "arm64", "os": "linux"}, "goreleaser_arch": "arm64"}}
+              ]
+            }
+          - { platform: ubuntu_focal, ansible_args: [
+                {"platform": "linux/amd64", "ansible_extra_args": ""},
+                {"platform": "linux/arm64", "ansible_extra_args": {"go_arch": "arm64", "hashi_platform": {"arch": "arm64", "os": "linux"}, "goreleaser_arch": "arm64"}}
+              ]
+            }
+          - { platform: ubuntu_kinetic, ansible_args: [
+                {"platform": "linux/amd64", "ansible_extra_args": ""},
+                {"platform": "linux/arm64", "ansible_extra_args": {"go_arch": "arm64", "hashi_platform": {"arch": "arm64", "os": "linux"}, "goreleaser_arch": "arm64"}}
+              ]
+            }
 
-#       - { platform: debian_bullseye, runtime_platforms: [linux/amd64, linux/arm64] }
-#       - { platform: debian_bookworm, runtime_platforms: [linux/amd64, linux/arm64] }
-#       - { platform: alpine_3.15    , runtime_platforms: [linux/amd64, linux/arm64] }
-#       - { platform: alpine_3.16    , runtime_platforms: [linux/amd64, linux/arm64] }
-#       - { platform: ubuntu_focal   , runtime_platforms: [linux/amd64, linux/arm64] }
-#       - { platform: ubuntu_kinetic , runtime_platforms: [linux/amd64, linux/arm64] }
