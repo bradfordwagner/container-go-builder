@@ -3,14 +3,13 @@
   vars:
     hashi_apps:
       - name: vault
-        ver: 1.11.0
-    go_ver: 1.18.3
+        ver: 1.14.0
+    go_ver: 1.21.3
     go_dev_escalate: true
-    goreleaser_version: v1.9.2
+    goreleaser_version: v1.21.2
     jq_ver: 1.6
   roles:
-    - role: andrewrothstein.gcc-toolbox
-    - role: andrewrothstein.go-dev
+    - role: andrewrothstein.go_dev
     - role: andrewrothstein.goreleaser
     - role: andrewrothstein.jq
     - role: andrewrothstein.hashi
