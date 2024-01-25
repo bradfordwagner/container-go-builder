@@ -73,9 +73,3 @@ spec:
                 {"platform": "linux/arm64", "ansible_extra_args": {"go_arch": "arm64", "hashi_platform": {"arch": "arm64", "os": "linux"}, "goreleaser_arch": "arm64"}}
               ]
             }
-          - { platform: ubuntu_kinetic, ansible_args: [
-                {"platform": "linux/amd64", "ansible_extra_args": ""},
-                {"platform": "linux/arm64", "ansible_extra_args": {"go_arch": "arm64", "hashi_platform": {"arch": "arm64", "os": "linux"}, "goreleaser_arch": "arm64"}}
-              ]
-            }
-
