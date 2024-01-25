@@ -6,7 +6,7 @@
         ver: 1.14.0
     go_ver: 1.21.3
     go_dev_escalate: true
-    goreleaser_version: v1.21.3
+    goreleaser_version: v1.21.2
     jq_ver: 1.6
   roles:
     - role: andrewrothstein.go_dev
