@@ -12,6 +12,14 @@ builds:
     platforms: [linux/amd64]
   - os: debian_bookworm
     platforms: [linux/amd64, linux/arm64]
+  - os: debian_bookworm-slim
+    platforms: [linux/amd64, linux/arm64]
+  - os: rockylinux_8
+    platforms: [linux/amd64, linux/arm64]
+  - os: rockylinux_9
+    platforms: [linux/amd64, linux/arm64]
+  - os: ubuntu_jammy
+    platforms: [linux/amd64, linux/arm64]
   - os: ubuntu_mantic
     platforms: [linux/amd64, linux/arm64]
   - os: ubuntu_noble
