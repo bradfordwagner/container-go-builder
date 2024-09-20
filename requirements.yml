@@ -1,6 +1,6 @@
 ---
 - role: andrewrothstein.go_dev
-  version: 4.0.6
+  version: 4.0.21
 - role: andrewrothstein.goreleaser
   version: v2.2.24
 - role: andrewrothstein.jq
