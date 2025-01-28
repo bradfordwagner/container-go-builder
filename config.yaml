@@ -1,4 +1,5 @@
 target_repo: ghcr.io/bradfordwagner/go-builder
+flavor: ansible_playbook
 builds:
     - os: alpine_3.18
       archs:
@@ -23,10 +24,6 @@ builds:
       archs:
         - linux/amd64
         - linux/arm64
-    - os: rockylinux_8
-      archs:
-        - linux/amd64
-        - linux/arm64
     - os: rockylinux_9
       archs:
         - linux/amd64
@@ -35,7 +32,7 @@ builds:
       archs:
         - linux/amd64
         - linux/arm64
-    - os: ubuntu_mantic
+    - os: ubuntu_plucky
       archs:
         - linux/amd64
         - linux/arm64
@@ -45,4 +42,4 @@ builds:
         - linux/arm64
 upstream:
     repo: ghcr.io/bradfordwagner/ansible
-    tag: 5.10.0
+    tag: 6.1.0
