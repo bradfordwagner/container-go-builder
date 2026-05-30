@@ -45,6 +45,7 @@ jobs:
       - name: build
         run: |
           docker build \
+            --provenance=false \
             --build-arg UPSTREAM=${{ matrix.cfg.upstream_ref }} \
             --build-arg RUNTIME=${{ matrix.cfg.runtime_ref }} \
             --build-arg GO_VERSION=${{ matrix.cfg.go_version }} \
