@@ -1,7 +1,7 @@
-## ADDED Requirements
+## Requirements
 
 ### Requirement: Daily cron workflow always builds and pushes
-A GitHub Actions workflow SHALL run daily at 8am EST (13:00 UTC, cron `0 13 * * *`) on the default branch (`main`) and execute the full `os × arch × go_version` build matrix. It SHALL always push images and assemble manifests — `push_enabled` in `config.yaml` is ignored by this workflow.
+A GitHub Actions workflow SHALL run daily at 7am EST (12:00 UTC, cron `0 12 * * *`) on the default branch (`main`) and execute the full `os × arch × go_version` build matrix. It SHALL always push images and assemble manifests — `push_enabled` in `config.yaml` is ignored by this workflow.
 
 #### Scenario: Workflow triggers on schedule
 - **WHEN** the cron schedule fires (daily)
