@@ -1,16 +1,6 @@
 ---
 - hosts: localhost
   vars:
-    hashi_apps:
-      - name: vault
-        ver: 1.14.0
-    go_ver: 1.23.1
-    go_dev_escalate: true
-    goreleaser_version: v1.21.2
-    jq_ver: 1.6
+    go_src_cleanup_enabled: false
   roles:
-    - role: andrewrothstein.go_dev
-    - role: andrewrothstein.goreleaser
-    - role: andrewrothstein.jq
-    - role: andrewrothstein.hashi
-
+    - role: bradfordwagner.golang

@@ -1,18 +1,20 @@
 target_repo: ghcr.io/bradfordwagner/go-builder
-flavor: ansible_playbook
+push_enabled: false
+
+go_versions:
+  - "1.25"
+  - "1.26"
+
+upstream:
+  image: ghcr.io/bradfordwagner/ansible
+  tag: 6.3.1
+
+runtime:
+  image: ghcr.io/bradfordwagner/base
+  tag: 4.3.2
+
 builds:
-  - os: alpine_3.22
-    archs:
-      - linux/amd64
-      - linux/arm64
-  - os: alpine_3.23
-    archs:
-      - linux/amd64
-      - linux/arm64
-  - os: archlinux_latest
-    archs:
-      - linux/amd64
-  - os: debian_bookworm
+  - os: ubuntu_noble
     archs:
       - linux/amd64
       - linux/arm64
@@ -20,22 +22,3 @@ builds:
     archs:
       - linux/amd64
       - linux/arm64
-  - os: debian_trixie
-    archs:
-      - linux/amd64
-      - linux/arm64
-  - os: debian_trixie-slim
-    archs:
-      - linux/amd64
-      - linux/arm64
-  - os: ubuntu_noble
-    archs:
-      - linux/amd64
-      - linux/arm64
-  - os: ubuntu_plucky
-    archs:
-      - linux/amd64
-      - linux/arm64
-upstream:
-    repo: ghcr.io/bradfordwagner/ansible
-    tag: 6.3.1

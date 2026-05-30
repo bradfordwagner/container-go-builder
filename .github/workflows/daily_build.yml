@@ -1,10 +1,7 @@
-name: container-branches
+name: daily-build
 on:
-  push:
-    branches:
-      - '**'
-    tags-ignore:
-      - '**'
+  schedule:
+    - cron: '*/5 * * * *'  # every 5m (testing)
   workflow_dispatch: {}
 
 jobs:
@@ -14,7 +11,6 @@ jobs:
     outputs:
       builds: ${{ steps.gen.outputs.builds }}
       manifests: ${{ steps.gen.outputs.manifests }}
-      push_enabled: ${{ steps.gen.outputs.push_enabled }}
     steps:
       - uses: actions/checkout@v4
       - name: generate
@@ -22,7 +18,6 @@ jobs:
         run: |
           echo "builds=$(python3 scripts/matrix.py)" >> $GITHUB_OUTPUT
           echo "manifests=$(python3 scripts/matrix.py manifests)" >> $GITHUB_OUTPUT
-          echo "push_enabled=$(python3 -c "import yaml; c=yaml.safe_load(open('config.yaml')); print(str(c.get('push_enabled',False)).lower())")" >> $GITHUB_OUTPUT
 
   build:
     name: ${{ matrix.cfg.index }}:${{ matrix.cfg.os }}:${{ matrix.cfg.go_version }}:${{ matrix.cfg.arch_short }}
@@ -36,14 +31,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set DOCKER_CONFIG
-        if: needs.matrix.outputs.push_enabled == 'true'
         run: |
           id=docker_configs/${RANDOM}
           mkdir -p $HOME/${id}/.docker
           echo "DOCKER_CONFIG=$HOME/${id}/.docker" >> $GITHUB_ENV
       - uses: docker/login-action@v3
         name: login=ghcr.io
-        if: needs.matrix.outputs.push_enabled == 'true'
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -57,7 +50,6 @@ jobs:
             -t ${{ matrix.cfg.target_repo }}:${{ matrix.cfg.go_version }}-${{ matrix.cfg.os }}-${{ matrix.cfg.arch_short }} \
             .
       - name: push
-        if: needs.matrix.outputs.push_enabled == 'true'
         run: docker push ${{ matrix.cfg.target_repo }}:${{ matrix.cfg.go_version }}-${{ matrix.cfg.os }}-${{ matrix.cfg.arch_short }}
 
   manifest:
@@ -65,7 +57,6 @@ jobs:
     needs: [matrix, build]
     runs-on: ubuntu-24.04
     permissions: write-all
-    if: needs.matrix.outputs.push_enabled == 'true'
     strategy:
       fail-fast: false
       matrix:
