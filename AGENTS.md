@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Builds and publishes a Go builder container image (`ghcr.io/bradfordwagner/go-builder`) using a bespoke native Docker pipeline. The image is an Ansible-provisioned base with Go installed, produced across a three-axis matrix: `os × arch × go_version`.
+Builds and publishes a Go builder container image (`ghcr.io/bradfordwagner/go-builder`) using a bespoke native Docker pipeline. The image is an Ansible-provisioned base with Go and goreleaser installed, produced across a three-axis matrix: `os × arch × go_version`.
 
 ## Key Files
 
@@ -11,8 +11,8 @@ Builds and publishes a Go builder container image (`ghcr.io/bradfordwagner/go-bu
 | `config.yaml` | Single source of truth for the full build matrix |
 | `Dockerfile` | Multi-stage build: ansible upstream → lean runtime base |
 | `scripts/matrix.py` | Reads `config.yaml`, emits JSON for GitHub Actions matrix strategy |
-| `requirements.yml` | Ansible Galaxy role pin (`bradfordwagner.golang`) |
-| `playbook.yml` | Ansible playbook that installs Go |
+| `requirements.yml` | Ansible Galaxy role pins (`bradfordwagner.golang`, `andrewrothstein.goreleaser`) |
+| `playbook.yml` | Ansible playbook that installs Go and goreleaser |
 | `.github/workflows/container_branches.yml` | Branch build workflow; push gated by `push_enabled` |
 | `.github/workflows/daily_build.yml` | Daily cron (8am EST); always pushes regardless of `push_enabled` |
 
@@ -87,6 +87,7 @@ Multi-stage: first stage uses the OS-specific ansible image to run the Ansible p
 - **Upstream ansible image**: update `upstream.tag`
 - **Runtime base image**: update `runtime.tag`
 - **Ansible golang role**: update `version` in `requirements.yml`
+- **goreleaser version**: update `goreleaser_version` in `playbook.yml` and the table in `README.md`
 
 ## Testing a Build Locally
 

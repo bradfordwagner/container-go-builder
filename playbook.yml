@@ -2,5 +2,7 @@
 - hosts: localhost
   vars:
     go_src_cleanup_enabled: false
+    goreleaser_version: v1.21.2
   roles:
     - role: bradfordwagner.golang
+    - role: andrewrothstein.goreleaser
