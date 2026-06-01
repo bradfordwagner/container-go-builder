@@ -1,5 +1,5 @@
 target_repo: ghcr.io/bradfordwagner/go-builder
-push_enabled: false
+push_enabled: true
 
 go_versions:
   - "1.25"
