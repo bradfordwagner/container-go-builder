@@ -9,6 +9,7 @@ WORKDIR /src
 
 RUN ansible-galaxy install -r requirements.yml \
  && ansible-playbook playbook.yml -e go_version=${GO_VERSION} \
+ && goreleaser --version \
  && rm -rf /src
 
 FROM ${RUNTIME}
