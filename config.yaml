@@ -7,18 +7,18 @@ go_versions:
 
 upstream:
   image: ghcr.io/bradfordwagner/ansible
-  tag: 6.3.1
+  tag: 6.4.0
 
 runtime:
   image: ghcr.io/bradfordwagner/base
-  tag: 4.5.0
+  tag: 4.6.0
 
 builds:
   - os: ubuntu_noble
     archs:
       - linux/amd64
       - linux/arm64
-  - os: debian_bookworm-slim
+  - os: debian_trixie-slim
     archs:
       - linux/amd64
       - linux/arm64
