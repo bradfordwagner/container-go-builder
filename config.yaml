@@ -7,11 +7,11 @@ go_versions:
 
 upstream:
   image: ghcr.io/bradfordwagner/ansible
-  tag: 6.4.0
+  tag: 6.5.0
 
 runtime:
   image: ghcr.io/bradfordwagner/base
-  tag: 4.6.0
+  tag: 4.7.0
 
 builds:
   - os: ubuntu_noble
