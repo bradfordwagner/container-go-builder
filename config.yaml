@@ -2,8 +2,8 @@ target_repo: ghcr.io/bradfordwagner/go-builder
 push_enabled: false
 
 go_versions:
-  - "1.25"
   - "1.26"
+  - "1.27"
 
 upstream:
   image: ghcr.io/bradfordwagner/ansible
