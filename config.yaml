@@ -7,7 +7,7 @@ go_versions:
 
 upstream:
   image: ghcr.io/bradfordwagner/ansible
-  tag: 6.5.1
+  tag: 6.6.0
 
 runtime:
   image: ghcr.io/bradfordwagner/base
