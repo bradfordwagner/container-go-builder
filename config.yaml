@@ -11,7 +11,7 @@ upstream:
 
 runtime:
   image: ghcr.io/bradfordwagner/base
-  tag: 4.7.0
+  tag: 4.7.1
 
 builds:
   - os: ubuntu_noble
