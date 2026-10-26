@@ -16,7 +16,7 @@ jobs:
       manifests: ${{ steps.gen.outputs.manifests }}
       push_enabled: ${{ steps.gen.outputs.push_enabled }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: generate
         id: gen
         run: |
@@ -34,14 +34,14 @@ jobs:
       matrix:
         cfg: ${{ fromJSON(needs.matrix.outputs.builds) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Set DOCKER_CONFIG
         if: needs.matrix.outputs.push_enabled == 'true'
         run: |
           id=docker_configs/${RANDOM}
           mkdir -p $HOME/${id}/.docker
           echo "DOCKER_CONFIG=$HOME/${id}/.docker" >> $GITHUB_ENV
-      - uses: docker/login-action@v3
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         name: login=ghcr.io
         if: needs.matrix.outputs.push_enabled == 'true'
         with:
@@ -78,7 +78,7 @@ jobs:
           id=docker_configs/${RANDOM}
           mkdir -p $HOME/${id}/.docker
           echo "DOCKER_CONFIG=$HOME/${id}/.docker" >> $GITHUB_ENV
-      - uses: docker/login-action@v3
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         name: login=ghcr.io
         with:
           registry: ghcr.io
