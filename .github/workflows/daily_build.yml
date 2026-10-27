@@ -7,7 +7,7 @@ on:
 jobs:
   matrix:
     name: matrix
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       builds: ${{ steps.gen.outputs.builds }}
       manifests: ${{ steps.gen.outputs.manifests }}
@@ -57,7 +57,7 @@ jobs:
   manifest:
     name: manifest=${{ matrix.cfg.go_version }}-${{ matrix.cfg.os }}
     needs: [matrix, build]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions: write-all
     strategy:
       fail-fast: false
